@@ -1,19 +1,14 @@
 var thumb = "👍🏻";
-var thumbLine = "";
-var thumbSquare = "";
-var lineCount = 0;
-var thumbTri = "";
 var fist = "✊🏼";
-var emojiOS = "";
-var emojiMid = "";
-var increment = 0;
 
 // --- Number of Characters
 // The user will enter a number of characters to display on the screen.
 
 function emojiLine(number) {
-  while (increment < number) {
-    increment += 1;
+  var thumbLine = "";
+  var thumbs = 0;
+  while (thumbs < number) {
+    thumbs += 1;
     thumbLine = thumbLine + thumb;
   }
   // for (i = 0; i < number; i++) {
@@ -27,6 +22,8 @@ function emojiLine(number) {
 // Use a loop within a loop and the <br> HTML tag in your output to create the square.
 
 function emojiSquare(square) {
+  var lineCount = 0;
+  var thumbSquare = "";
   while (lineCount < square) {
     lineCount += 1;
     for (i = 0; i < square; i++) {
@@ -42,6 +39,8 @@ function emojiSquare(square) {
 // Use a loop within a loop, a conditional and the <br> HTML tag in your output to create the triangle.
 
 function emojiTri(stack) {
+  var lineCount = 0;
+  var thumbTri = "";
   while (lineCount < stack) {
     lineCount += 1;
     thumbTri = thumbTri + "<br>";
@@ -57,15 +56,17 @@ function emojiTri(stack) {
 // The square is outlined by a different character.
 
 function emojiOutline(width) {
+  var emojiOS = "";
+  var emojiMid = "";
   console.log("input: " + width);
-  emojiOS = emojiLine(width);
+  emojiOS = emojiLine(+width);
   console.log(emojiOS);
-  var smallBox = width - 2; // width of inner box
+  var smallBox = +width - 2; // width of inner box
   console.log("inner height: " + smallBox);
   // if input is more than 1
   if (width > 1) {
     // create a square. for each iteration,
-    for (midHeight = 0; midHeight < width; midHeight++) {
+    for (midHeight = 0; midHeight < +width; midHeight++) {
       // >>>>>>>> why is this not repeating the middle line??? it's repeating in console but not output??
       // if the inner box is more than 1
       if (smallBox > 1) {
@@ -78,8 +79,8 @@ function emojiOutline(width) {
         // complete middle line
         emojiMid = emojiMid + thumb + "<br>";
         // repeat middle line as neccessary
-        emojiMid += emojiMid;
       }
+      emojiMid += emojiMid;
     }
     // console.log(emojiMid);
     emojiOS = emojiOS + "<br>" + emojiMid + emojiOS;
